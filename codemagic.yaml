@@ -1,0 +1,20 @@
+workflows:
+  ios-workflow:
+    name: iOS Build (PWABuilder)
+    environment:
+      xcode: latest
+    scripts:
+      - name: Show files
+        script: ls -R
+
+      - name: Build iOS app
+        script: |
+          xcodebuild \
+          -project "Busanso Nation.xcodeproj" \
+          -scheme "Busanso Nation" \
+          -sdk iphonesimulator \
+          -configuration Release \
+          build
+
+    artifacts:
+      - build/**/*.app
